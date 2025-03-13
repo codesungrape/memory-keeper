@@ -1,0 +1,103 @@
+/* SignIn.module.css */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.authCard {
+  width: 100%;
+  max-width: 450px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.1),
+    0 8px 10px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  margin: 0 auto; /* Center horizontally */
+  position: relative; /* Needed for z-index to work */
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+.authCard:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.1),
+    0 10px 15px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.link {
+  color: #4f46e5;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #4338ca;
+  text-decoration: underline;
+}
+
+.logoutButton {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #ef4444;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-color: #dc2626;
+}
+
+/* This is a workaround for styling third-party components in CSS modules */
+.container :global(button) {
+  border-radius: 0.5rem !important;
+  font-weight: 500 !important;
+}
+
+.container :global(input) {
+  border-radius: 0.5rem !important;
+  padding: 0.625rem 1rem !important;
+}
