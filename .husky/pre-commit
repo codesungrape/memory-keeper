@@ -1,0 +1,15 @@
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+echo -e "${BLUE}🔍 Running lint and formatting checks...${NC}"
+
+if npm run pre-commit; then
+  echo -e "${GREEN}✅ Checks passed! Proceeding with commit.${NC}"
+else
+  echo -e "${RED}❌ Commit failed due to linting or formatting errors.${NC}"
+  echo -e "${YELLOW}💡 Please run 'npm run lint' and 'npm run format' to fix issues before committing.${NC}"
+  exit 1
+fi
