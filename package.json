@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prepare": "husky",
     "format": "prettier --write .",
-    "pre-commit": "eslint && prettier --check ."
+    "pre-commit": "eslint && prettier --check .",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@supabase/auth-helpers-nextjs": "^0.10.0",
