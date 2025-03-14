@@ -1,3 +1,5 @@
+// Auth compoentnent config inc redirect
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -67,7 +69,11 @@ export default function AuthSignInPage() {
             // Add your preferred providers
             providers={["google", "github"]}
             redirectTo={
-              typeof window !== "undefined" ? window.location.origin : undefined
+              typeof window !== "undefined"
+                ? process.env.NODE_ENV === "production"
+                  ? "https://memory-keeper-wine.vercel.app/auth/callback"
+                  : "http://localhost:3000/auth/callback"
+                : undefined
             }
           />
 
