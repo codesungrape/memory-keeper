@@ -1,0 +1,32 @@
+.footer {
+  background-color: #271f30;
+  color: #ffffff;
+  padding: 1.5rem;
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.credit {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500; /* Medium font weight */
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.link:hover {
+  color: #2c6e49; /* Highlight color on hover */
+}
