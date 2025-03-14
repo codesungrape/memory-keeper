@@ -70,10 +70,12 @@ export default function AuthSignInPage() {
             providers={["google", "github"]}
             redirectTo={
               typeof window !== "undefined"
-                ? process.env.NODE_ENV === "production"
-                  ? "https://memory-keeper-wine.vercel.app/auth/callback"
-                  : "http://localhost:3000/auth/callback"
+                ? "https://memory-keeper-wine.vercel.app/auth/callback"
                 : undefined
+              // ? process.env.NODE_ENV === "production"
+              //   ? "https://memory-keeper-wine.vercel.app/auth/callback"
+              //   : "http://localhost:3000/auth/callback"
+              // : undefined
             }
           />
 
