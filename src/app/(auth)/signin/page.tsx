@@ -59,7 +59,7 @@ export default function AuthSignInPage() {
       <div className={styles.container}>
         <div className={styles.authCard}>
           <div className={styles.header}>
-            <h1 className={styles.title}>Welcome Back</h1>
+            {/* <h1 className={styles.title}>Welcome Back</h1> */}
             <p className={styles.subtitle}>Sign in to your account</p>
           </div>
 
@@ -94,19 +94,26 @@ export default function AuthSignInPage() {
                 },
               },
             }}
+            // remove forgotten pasword links/section for now
+            localization={{
+              variables: {
+                // @ts-expect-error -- We know this works even though TypeScript doesn't
+                forgotten_password: "", // Try direct property
+              },
+            }}
             // Add your preferred providers
             providers={["google", "github"]}
             redirectTo={redirectUrl}
           />
 
-          <div className={styles.footer}>
+          {/* <div className={styles.footer}>
             <p>
               Need help?{" "}
               <a href="#" className={styles.link}>
                 Contact support
               </a>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     );
