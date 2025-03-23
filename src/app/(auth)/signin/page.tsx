@@ -60,7 +60,7 @@ export default function AuthSignInPage() {
         <div className={styles.authCard}>
           <div className={styles.header}>
             {/* <h1 className={styles.title}>Welcome Back</h1> */}
-            <p className={styles.subtitle}>Sign in to your account</p>
+            <h1 className={styles.subtitle}>Sign in to your account</h1>
           </div>
 
           <Auth
@@ -102,7 +102,7 @@ export default function AuthSignInPage() {
               },
             }}
             // Add your preferred providers
-            providers={["google", "github"]}
+            providers={["google"]}
             redirectTo={redirectUrl}
           />
 
