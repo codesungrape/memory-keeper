@@ -13,6 +13,7 @@ export default function Header() {
             width={150}
             height={110}
             className={styles.logo}
+            aria-label="My Memories Logo"
             priority
           />
         </Link>
