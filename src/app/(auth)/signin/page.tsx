@@ -1,4 +1,5 @@
 // Auth compoentnent config inc redirect
+// app/(auth)/signin/page.tsx
 
 "use client";
 
@@ -8,23 +9,50 @@ import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import { Session } from "@supabase/supabase-js";
 import styles from "./SignIn.module.css";
+import { useRouter } from "next/navigation";
 
 export default function AuthSignInPage() {
   const [session, setSession] = useState<Session | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    // Check for existing session on component mount
+    const checkSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       setSession(session);
-    });
 
+      // Redirect to dashboard if already logged in
+      if (session) {
+        router.push("/");
+      }
+    };
+
+    // Called immediately to check if they were already logged in when user first opens the page
+    checkSession();
+
+    // Set up auth state change listener to watch for any future login changes
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
+
+      // Redirect to dashboard when user logs in
+      if (session) {
+        router.push("/");
+      }
     });
 
+    // Clean up subscription when component unmounts
     return () => subscription.unsubscribe();
-  }, []);
+  }, [router]);
+
+  // define the reditect URL based on environment
+  const redirectUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/auth/callback`
+      : undefined;
 
   if (!session) {
     return (
@@ -68,15 +96,7 @@ export default function AuthSignInPage() {
             }}
             // Add your preferred providers
             providers={["google", "github"]}
-            redirectTo={
-              typeof window !== "undefined"
-                ? // ? process.env.NEXT_PUBLIC_REDIRECT_URL || window.location.origin
-                  // : undefined
-                  process.env.NODE_ENV === "production"
-                  ? "https://memory-keeper-wine.vercel.app/auth/callback"
-                  : "http://localhost:3000/auth/callback"
-                : undefined
-            }
+            redirectTo={redirectUrl}
           />
 
           <div className={styles.footer}>
